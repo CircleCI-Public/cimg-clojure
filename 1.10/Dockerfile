@@ -19,6 +19,7 @@ RUN sudo curl -sSL -o /usr/local/bin/lein "https://raw.githubusercontent.com/tec
 
 ENV PATH=$PATH:$LEIN_INSTALL
 
-ENV CLOJURE_VERSION=1.10.1
+ENV CLOJURE_VERSION=1.10.0
 RUN echo "(defproject dummy \"\" :dependencies [[org.clojure/clojure \"${CLOJURE_VERSION}\"]])" > project.clj && \
-	lein deps && rm project.clj
+	lein deps && \
+	rm -r project.clj target/

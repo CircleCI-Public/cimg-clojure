@@ -21,4 +21,5 @@ ENV PATH=$PATH:$LEIN_INSTALL
 
 ENV CLOJURE_VERSION=%%MAIN_VERSION%%
 RUN echo "(defproject dummy \"\" :dependencies [[org.clojure/clojure \"${CLOJURE_VERSION}\"]])" > project.clj && \
-	lein deps && rm project.clj
+	lein deps && \
+	rm -r project.clj target/

@@ -1,14 +1,14 @@
 <div align="center">
 	<p>
-		<img alt="CircleCI Logo" src="https://raw.github.com/CircleCI-Public/cimg-clojure/master/img/circle-circleci.svg?sanitize=true" width="75" />
-		<img alt="Docker Logo" src="https://raw.github.com/CircleCI-Public/cimg-clojure/master/img/circle-docker.svg?sanitize=true" width="75" />
-		<img alt="Clojure Logo" src="https://raw.github.com/CircleCI-Public/cimg-clojure/master/img/circle-clojure.svg?sanitize=true" width="75" />
+		<img alt="CircleCI Logo" src="https://raw.github.com/CircleCI-Public/cimg-clojure/main/img/circle-circleci.svg?sanitize=true" width="75" />
+		<img alt="Docker Logo" src="https://raw.github.com/CircleCI-Public/cimg-clojure/main/img/circle-docker.svg?sanitize=true" width="75" />
+		<img alt="Clojure Logo" src="https://raw.github.com/CircleCI-Public/cimg-clojure/main/img/circle-clojure.svg?sanitize=true" width="75" />
 	</p>
 	<h1>CircleCI Convenience Images => Clojure</h1>
 	<h3>A Continous Integration focused Clojure Docker image built to run on CircleCI</h3>
 </div>
 
-[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-clojure.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-clojure) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-clojure/master/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/clojure)](https://hub.docker.com/r/cimg/clojure) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images)
+[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-clojure.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-clojure) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-clojure/main/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/clojure)](https://hub.docker.com/r/cimg/clojure) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images)
 
 ***This image is in beta and is designed to supercede the original CircleCI Clojure image, `circleci/clojure`.***
 
@@ -35,21 +35,21 @@ For example:
 jobs:
   build:
     docker:
-      - image: cimg/clojure:1.10.1
+      - image: cimg/clojure:1.10.3
     steps:
       - checkout
       - run: lein version
 ```
 
 In the above example, the CircleCI Clojure Docker image is used for the primary container.
-More specifically, the tag `1.10.1` is used meaning the version of Clojure will be Clojure v1.110.1.
+More specifically, the tag `1.10.3` is used meaning the version of Clojure will be Clojure v1.10.3.
 You can now use Clojure within the steps for this job.
 
 
 ## How This Image Works
 
 This image contains the Clojure programming language as installed via [Leiningen](https://leiningen.org/).
-These Clojure images will contain OpenJDK v11.
+These Clojure images will contain OpenJDK v17.
 
 ### Variants
 
@@ -115,7 +115,7 @@ Dockerfiles can be generated for a specific Clojure version using the `gen-docke
 For example, to generate the Dockerfile for Clojure v1.10.1, you would run the following from the root of the repo:
 
 ```bash
-./shared/gen-dockerfiles.sh 1.10.1
+./shared/gen-dockerfiles.sh 1.10.3#1.10.3.1058
 ```
 
 The generated Dockerfile will be located at `./1.10/Dockefile`.
@@ -155,7 +155,7 @@ All that would need to be done after that is:
 - review the PR
 - merge the PR
 
-The master branch build will then publish a release.
+The main branch build will then publish a release.
 
 ### Incorporating Changes
 

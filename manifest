@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+namespace=cimg
 repository=clojure
 parent=openjdk
-variants=()
+variants=(node browsers)

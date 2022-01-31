@@ -10,7 +10,7 @@
 
 [![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-clojure.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-clojure) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-clojure/main/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/clojure)](https://hub.docker.com/r/cimg/clojure) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images)
 
-***This image is in beta and is designed to supercede the original CircleCI Clojure image, `circleci/clojure`.***
+***This image is designed to supercede the original CircleCI Clojure image, `circleci/clojure`.***
 
 `cimg/clojure` is a Docker image created by CircleCI with continuous integration builds in mind.
 Each tag contains a Clojure version, a JVM, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
@@ -48,8 +48,8 @@ You can now use Clojure within the steps for this job.
 
 ## How This Image Works
 
-This image contains the Clojure programming language as installed via [Leiningen](https://leiningen.org/).
-These Clojure images will contain OpenJDK v17.
+This image contains the Clojure programming language as installed via clj as well as [Leiningen](https://leiningen.org/).
+These Clojure images contain OpenJDK v17 though alternates with support for OpenJDK v8 (and possibly) more are in the works..
 
 Babashka is pre-installed.
 Please note that Babashka has frequent releases while CircleCI only releases Clojure images as the upstream project makes a release.

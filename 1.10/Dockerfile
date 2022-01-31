@@ -9,7 +9,7 @@ ENV CLOJURE_VERSION=1.10.3
 # Setup the primary install method for Clojure, using CLJ. It unfortunately
 # requires the Clojure version as well as the build number (?), thus a
 # parameter (param1) is used.
-RUN curl -sSL -o clojure-installer.sh "https://download.clojure.org/install/linux-install-1.10.3.1058.sh" && \
+RUN curl -sSL -o clojure-installer.sh "https://download.clojure.org/install/linux-install-1.10.3.1069.sh" && \
 	chmod +x clojure-installer.sh && \
 	sudo ./clojure-installer.sh && \
 	rm clojure-installer.sh
@@ -23,3 +23,9 @@ RUN mkdir -p $HOME/bin && \
 	echo "(defproject dummy \"\" :dependencies [[org.clojure/clojure \"${CLOJURE_VERSION}\"]])" > project.clj && \
 	lein deps && \
 	rm -r project.clj target/
+
+# Install tooling
+ENV BABASHKA_VERSION=0.7.4
+RUN curl -sSL "https://github.com/babashka/babashka/releases/download/v0.7.4/babashka-0.7.4-linux-amd64-static.tar.gz" \
+	| sudo tar -xz -C /usr/local/bin/ && \
+	bb --version

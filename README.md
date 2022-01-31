@@ -57,10 +57,44 @@ There will be times were the pre-installed version of Babashka is older than you
 
 ### Variants
 
-This image will have a Node.js variant in the future.
 Variant images typically contain the same base software, but with a few additional modifications.
+
+#### Node.js
+
 The Node.js variant is the same Clojure image but with Node.js also installed.
-The Node.js variant will be used by appending `-node` to the end of an existing `cimg/clojure` tag.
+The Node.js variant can be used by appending `-node` to the end of an existing `cimg/clojure` tag.
+
+```yaml
+jobs:
+  build:
+    docker:
+      - image: cimg/clojure:1.10.3-node
+    steps:
+      - checkout
+      - run: node --version
+```
+
+#### Browsers
+
+The browsers variant is the same Clojure image but with Node.js, Selenium, and browser dependencies pre-installed via apt.
+The browsers variant can be used by appending `-browser` to the end of an existing `cimg/clojure` tag.
+The browsers variant is designed to work in conjunction with the [CircleCI Browser Tools orb](https://circleci.com/developer/orbs/orb/circleci/browser-tools).
+You can use the orb to install a version of Google Chrome and/or Firefox into your build. The image contains all of the supporting tools needed to use both the browser and its driver.
+
+```yaml
+orbs:
+  browser-tools: circleci/browser-tools@1.1
+jobs:
+  build:
+    docker:
+      - image: cimg/clojure:1.10.3-browsers
+    steps:
+      - browser-tools/install-browser-tools
+      - checkout
+      - run: |
+          node --version
+          google-chrome --version
+```
 
 ### Tagging Scheme
 

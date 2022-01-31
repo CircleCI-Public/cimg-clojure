@@ -23,3 +23,9 @@ RUN mkdir -p $HOME/bin && \
 	echo "(defproject dummy \"\" :dependencies [[org.clojure/clojure \"${CLOJURE_VERSION}\"]])" > project.clj && \
 	lein deps && \
 	rm -r project.clj target/
+
+# Install tooling
+ENV BABASHKA_VERSION=0.7.4
+RUN curl -sSL "https://github.com/babashka/babashka/releases/download/v0.7.4/babashka-0.7.4-linux-amd64-static.tar.gz" \
+	| sudo tar -xz -C /usr/local/bin/ && \
+	bb --version

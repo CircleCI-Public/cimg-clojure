@@ -51,6 +51,10 @@ You can now use Clojure within the steps for this job.
 This image contains the Clojure programming language as installed via [Leiningen](https://leiningen.org/).
 These Clojure images will contain OpenJDK v17.
 
+Babashka is pre-installed.
+Please note that Babashka has frequent releases while CircleCI only releases Clojure images as the upstream project makes a release.
+There will be times were the pre-installed version of Babashka is older than you might want.
+
 ### Variants
 
 This image will have a Node.js variant in the future.

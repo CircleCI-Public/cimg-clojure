@@ -1,44 +1,10 @@
 version: 2.1
 
+orbs:
+  cimg-orb: circleci/cimg-orb@0.0.2
+
 workflows:
   main:
     jobs:
-      - build:
+      - cimg-orb/build-and-deploy:
           context: cimg-publishing
-
-jobs:
-  build:
-    docker:
-      - image: cimg/base:2022.01
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: "20.10.11"
-      - run:
-          name: "Build Docker Images"
-          command: |
-            ./build-images.sh
-            echo 'export DOCKER_PASS=$DOCKER_TOKEN' >> $BASH_ENV
-      - deploy:
-          name: "Publish Docker Images (main branch only)"
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "main" ]; then
-              
-              echo $DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin
-              
-              # an else block will be added in the future for a staging release
-              if git log -1 --pretty=%s | grep "\[release\]"; then
-                echo "Publishing cimg/clojure to Docker Hub production."
-                ./push-images.sh
-              else
-                echo "Skipping publishing."
-              fi
-
-              # Update the Docker Hub description
-              STUBB_VER=0.2.0
-              STUBB_URL="https://github.com/CircleCI-Public/stubb/releases/download/v${STUBB_VER}/stubb_${STUBB_VER}-linux-amd64.tar.gz"
-              mkdir -p $HOME/bin
-              curl -sSL $STUBB_URL | tar -xz -C $HOME/bin stubb
-
-              stubb set description cimg/clojure ./README.md
-            fi

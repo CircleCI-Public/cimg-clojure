@@ -4,3 +4,6 @@ namespace=cimg
 repository=clojure
 parent=openjdk
 variants=(node browsers)
+parentTags=(8.0 11.0 17.0)
+defaultParentTag=17.0
+parentSlug=openjdk

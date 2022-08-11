@@ -164,7 +164,7 @@ For example, to generate the Dockerfile for Clojure v1.10.1, you would run the f
 ```
 
 This is the Clojure version `1.10.3` followed by a version parameter, which is the Clojure number together with the build number, `1.10.3.1058`.
-You can get the current build number from the [Linux Install Instructions](https://clojure.org/guides/getting_started#_installation_on_linux) for Clojure.
+You can get the current build number from the [Linux Install Instructions][linux-version] for Clojure.
 It's the last part of the version in the example on that page.
 
 The generated Dockerfile will be located at `./1.10/<parent-tag>/Dockefile` in addition to their corresponding variants located at `./1.10/<parent-tag>/<variant>/Dockefile`
@@ -209,7 +209,7 @@ To make a proper release for this image, lets's use the fake Clojure version of 
 ```
 
 Here the fake Clojure version `9.9.9` is used followed by a version parameter, which is the fake Clojure number together with the fake build number, `9.9.9.1234`.
-You can get the current build number from the [Linux Install Instructions](https://clojure.org/guides/getting_started#_installation_on_linux) for Clojure.
+You can get the current build number from the [Linux Install Instructions][linux-version] for Clojure.
 It's the last part of the version in the example on that page.
 
 This will automatically create a new Git branch, generate the Dockerfile(s), stage the changes, commit them, and push them to GitHub.
@@ -269,3 +269,7 @@ It will list all of the keys and values supported in `.circleci/config.yml`.
 
 This repository is licensed under the MIT license.
 The license can be found [here](./LICENSE).
+
+
+
+[linux-version]: https://clojure.org/guides/install_clojure#_linux_instructions

@@ -14,7 +14,7 @@ RUN curl -sSL -o clojure-installer.sh "https://download.clojure.org/install/linu
 	sudo ./clojure-installer.sh && \
 	rm clojure-installer.sh
 
-ENV LEIN_VERSION=2.9.8
+ENV LEIN_VERSION=2.9.10
 RUN mkdir -p $HOME/bin && \
 	# the above line can go in the next base image update
 	curl -sSL -o $HOME/bin/lein "https://raw.githubusercontent.com/technomancy/leiningen/${LEIN_VERSION}/bin/lein" && \
@@ -25,7 +25,7 @@ RUN mkdir -p $HOME/bin && \
 	rm -r project.clj target/
 
 # Install tooling
-ENV BABASHKA_VERSION=0.7.4
+ENV BABASHKA_VERSION=0.9.161
 RUN curl -sSL "https://github.com/babashka/babashka/releases/download/v0.7.4/babashka-0.7.4-linux-amd64-static.tar.gz" \
 	| sudo tar -xz -C /usr/local/bin/ && \
 	bb --version

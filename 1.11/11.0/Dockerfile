@@ -4,12 +4,13 @@ FROM cimg/openjdk:11.0
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV CLOJURE_VERSION=1.11.1
+ENV CLOJURE_VERSION=1.11.1 \
+	PATH=$JAVA_HOME/bin:$PATH
 
 # Setup the primary install method for Clojure, using CLJ. It unfortunately
 # requires the Clojure version as well as the build number (?), thus a
 # parameter (param1) is used.
-RUN curl -sSL -o clojure-installer.sh "https://download.clojure.org/install/linux-install-1.11.1.1105.sh" && \
+RUN curl -sSL -o clojure-installer.sh "https://download.clojure.org/install/linux-install-1.11.1.1200.sh" && \
 	chmod +x clojure-installer.sh && \
 	sudo ./clojure-installer.sh && \
 	rm clojure-installer.sh
@@ -25,7 +26,7 @@ RUN mkdir -p $HOME/bin && \
 	rm -r project.clj target/
 
 # Install tooling
-ENV BABASHKA_VERSION=0.9.161
-RUN curl -sSL "https://github.com/babashka/babashka/releases/download/v0.7.4/babashka-0.7.4-linux-amd64-static.tar.gz" \
+ENV BABASHKA_VERSION=0.10.163
+RUN curl -sSL "https://github.com/babashka/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-linux-amd64-static.tar.gz" \
 	| sudo tar -xz -C /usr/local/bin/ && \
 	bb --version

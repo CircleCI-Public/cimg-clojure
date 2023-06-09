@@ -15,6 +15,9 @@
 `cimg/clojure` is a Docker image created by CircleCI with continuous integration builds in mind.
 Each tag contains a Clojure version, a JVM, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
 
+## Support Policy
+
+The CircleCI Docker Convenience Image support policy can be found on the [CircleCI docs](https://circleci.com/docs/convenience-images-support-policy) site. This policy outlines the release, update, and deprecation policy for CircleCI Docker Convenience Images.
 
 ## Table of Contents
 

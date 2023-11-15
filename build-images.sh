@@ -10,3 +10,6 @@ docker build --file 1.11/11.0/browsers/Dockerfile -t cimg/clojure:1.11.1-openjdk
 docker build --file 1.11/17.0/Dockerfile -t cimg/clojure:1.11.1-openjdk-17.0 -t cimg/clojure:1.11-openjdk-17.0 .
 docker build --file 1.11/17.0/node/Dockerfile -t cimg/clojure:1.11.1-openjdk-17.0-node -t cimg/clojure:1.11-openjdk-17.0-node .
 docker build --file 1.11/17.0/browsers/Dockerfile -t cimg/clojure:1.11.1-openjdk-17.0-browsers -t cimg/clojure:1.11-openjdk-17.0-browsers .
+docker build --file 1.11/21.0/Dockerfile -t cimg/clojure:1.11.1-openjdk-21.0 -t cimg/clojure:1.11-openjdk-21.0 .
+docker build --file 1.11/21.0/node/Dockerfile -t cimg/clojure:1.11.1-openjdk-21.0-node -t cimg/clojure:1.11-openjdk-21.0-node .
+docker build --file 1.11/21.0/browsers/Dockerfile -t cimg/clojure:1.11.1-openjdk-21.0-browsers -t cimg/clojure:1.11-openjdk-21.0-browsers .

@@ -2,7 +2,7 @@
 
 FROM cimg/%%PARENT%%:%%PARENT_TAG%%
 
-LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
+LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
 ENV CLOJURE_VERSION=%%VERSION_FULL%% \
 	PATH=$JAVA_HOME/bin:$PATH

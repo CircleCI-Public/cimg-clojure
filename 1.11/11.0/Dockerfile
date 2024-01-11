@@ -2,7 +2,7 @@
 
 FROM cimg/openjdk:11.0
 
-LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
+LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
 ENV CLOJURE_VERSION=1.11.1 \
 	PATH=$JAVA_HOME/bin:$PATH
@@ -15,7 +15,7 @@ RUN curl -sSL -o clojure-installer.sh "https://download.clojure.org/install/linu
 	sudo ./clojure-installer.sh && \
 	rm clojure-installer.sh
 
-ENV LEIN_VERSION=2.9.10
+ENV LEIN_VERSION=2.10.0
 RUN mkdir -p $HOME/bin && \
 	# the above line can go in the next base image update
 	curl -sSL -o $HOME/bin/lein "https://raw.githubusercontent.com/technomancy/leiningen/${LEIN_VERSION}/bin/lein" && \
@@ -27,6 +27,7 @@ RUN mkdir -p $HOME/bin && \
 
 # Install tooling
 ENV BABASHKA_VERSION=0.10.163
-RUN curl -sSL "https://github.com/babashka/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-linux-amd64-static.tar.gz" \
+RUN [[ $(uname -m) == "x86_64" ]] && ARCH="amd64" || ARCH="aarch64" && \
+	curl -sSL "https://github.com/babashka/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-linux-${ARCH}-static.tar.gz" \
 	| sudo tar -xz -C /usr/local/bin/ && \
 	bb --version

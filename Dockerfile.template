@@ -27,6 +27,7 @@ RUN mkdir -p $HOME/bin && \
 
 # Install tooling
 ENV BABASHKA_VERSION=0.10.163
-RUN curl -sSL "https://github.com/babashka/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-linux-amd64-static.tar.gz" \
+RUN [[ $(uname -m) == "x86_64" ]] && ARCH="amd64" || ARCH="aarch64" && \
+	curl -sSL "https://github.com/babashka/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-linux-${ARCH}-static.tar.gz" \
 	| sudo tar -xz -C /usr/local/bin/ && \
 	bb --version

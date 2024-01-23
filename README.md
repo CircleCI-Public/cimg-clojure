@@ -10,7 +10,7 @@
 
 [![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-clojure.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-clojure) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-clojure/main/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/clojure)](https://hub.docker.com/r/cimg/clojure) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images)
 
-***This image is designed to supercede the original CircleCI Clojure image, `circleci/clojure`.***
+**_This image is designed to supercede the original CircleCI Clojure image, `circleci/clojure`._**
 
 `cimg/clojure` is a Docker image created by CircleCI with continuous integration builds in mind.
 Each tag contains a Clojure version, a JVM, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
@@ -27,7 +27,6 @@ The CircleCI Docker Convenience Image support policy can be found on the [Circle
 - [Contributing](#contributing)
 - [Additional Resources](#additional-resources)
 - [License](#license)
-
 
 ## Getting Started
 
@@ -48,7 +47,6 @@ In the above example, the CircleCI Clojure Docker image is used for the primary 
 More specifically, the tag `1.10.3` is used meaning the version of Clojure will be Clojure v1.10.3.
 You can now use Clojure within the steps for this job.
 
-
 ## How This Image Works
 
 This image contains the Clojure programming language as installed via clj as well as [Leiningen](https://leiningen.org/).
@@ -61,7 +59,7 @@ There will be times were the pre-installed version of Babashka is older than you
 ### Parent Tags and Parent Slugs
 
 Parent Tags introduce the ability to choose a specific version to include in the tag. In conjunction with
-the Parent Slug, Clojure now supports choosing which OpenJDK version to use and looks like: `parentSlug-parentTag`, which would translate to `openjdk-8.0` 
+the Parent Slug, Clojure now supports choosing which OpenJDK version to use and looks like: `parentSlug-parentTag`, which would translate to `openjdk-8.0`
 
 ### Variants
 
@@ -122,7 +120,6 @@ For example, the tag `1.10` points to Clojure v1.10.1 now, but when the next rel
 `[-variant]` - Variant tags, if available, can optionally be used.
 Once the Node.js variant is available, it could be used like this: `cimg/clojure:1.10-node`.
 
-
 ## Development
 
 Images can be built and run locally with this repository.
@@ -181,6 +178,7 @@ docker run -it test/clojure:1.10.1-openjdk-8.0 bash
 ```
 
 If using the default version (latest), you could run either of the following:
+
 ```bash
 cd 1.10
 docker build -t test/clojure:1.10.1 .
@@ -244,7 +242,7 @@ git commit -m "Updating submodule for foo."
 This is to aid in "determinism" and prevent breaking customer builds.
 New Clojure images will automatically pick up the changes.
 
-If you *really* want to publish changes from a parent image into the Clojure image, you have to build a specific image version as if it was a new image.
+If you _really_ want to publish changes from a parent image into the Clojure image, you have to build a specific image version as if it was a new image.
 This will create a new Dockerfile and once published, a new image.
 
 **Clojure specific changes** - Editing the `Dockerfile.template` file in this repo is how to modify the Clojure image specifically.
@@ -256,20 +254,16 @@ We encourage [issues](https://github.com/CircleCI-Public/cimg-clojure/issues) an
 
 Please check out our [contributing guide](.github/CONTRIBUTING.md) which outlines best practices for contributions and what you can expect from the images team at CircleCI.
 
-
 ## Additional Resources
 
-[CircleCI Docs](https://circleci.com/docs/) - The official CircleCI Documentation website.  
+[CircleCI Docs](https://circleci.com/docs/) - The official CircleCI Documentation website.
 [CircleCI Configuration Reference](https://circleci.com/docs/2.0/configuration-reference/#section=configuration) - From CircleCI Docs, the configuration reference page is one of the most useful pages we have.
-It will list all of the keys and values supported in `.circleci/config.yml`.  
-[Docker Docs](https://docs.docker.com/) - For simple projects this won't be needed but if you want to dive deeper into learning Docker, this is a great resource.  
-
+It will list all of the keys and values supported in `.circleci/config.yml`.
+[Docker Docs](https://docs.docker.com/) - For simple projects this won't be needed but if you want to dive deeper into learning Docker, this is a great resource.
 
 ## License
 
 This repository is licensed under the MIT license.
 The license can be found [here](./LICENSE).
-
-
 
 [linux-version]: https://clojure.org/guides/install_clojure#_linux_instructions

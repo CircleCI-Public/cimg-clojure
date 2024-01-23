@@ -30,3 +30,9 @@ docker tag cimg/clojure:1.11.1-openjdk-17.0-browsers cimg/clojure:1.11.1-browser
 docker tag cimg/clojure:1.11-openjdk-17.0-browsers cimg/clojure:1.11-browsers
 docker push cimg/clojure:1.11-browsers
 docker push cimg/clojure:1.11.1-browsers
+docker push cimg/clojure:1.11-openjdk-21.0
+docker push cimg/clojure:1.11.1-openjdk-21.0
+docker push cimg/clojure:1.11-openjdk-21.0-node
+docker push cimg/clojure:1.11.1-openjdk-21.0-node
+docker push cimg/clojure:1.11-openjdk-21.0-browsers
+docker push cimg/clojure:1.11.1-openjdk-21.0-browsers

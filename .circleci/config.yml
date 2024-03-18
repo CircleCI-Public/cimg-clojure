@@ -7,15 +7,14 @@ workflows:
   main-wf:
     jobs:
       - cimg/build-and-deploy:
-          name: "Staging"
+          name: "Test"
           docker-namespace: ccitest
           docker-repository: clojure
-          publish-branch: test
           filters:
             branches:
               ignore:
                 - main
-          context: cimg-publishing
+          context: cimg-docker-image-building
       - cimg/build-and-deploy:
           name: "Deploy"
           docker-repository: clojure
@@ -23,4 +22,7 @@ workflows:
             branches:
               only:
                 - main
-          context: cimg-publishing
+          context:
+            - cimg-docker-image-building
+            - cimg-docker-image-publishing
+            

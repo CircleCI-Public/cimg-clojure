@@ -14,7 +14,10 @@ workflows:
             branches:
               ignore:
                 - main
-          context: cimg-docker-image-building
+          context: 
+            - slack-notification-access-token
+            - slack-cimg-notifications
+            - cimg-docker-image-building
       - cimg/build-and-deploy:
           name: "Deploy"
           docker-repository: clojure
@@ -23,6 +26,8 @@ workflows:
               only:
                 - main
           context:
+            - slack-notification-access-token
+            - slack-cimg-notifications
             - cimg-docker-image-building
             - cimg-docker-image-publishing
             

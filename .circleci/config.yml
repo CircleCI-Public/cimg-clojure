@@ -1,10 +1,27 @@
 version: 2.1
 
 orbs:
-  cimg: circleci/cimg@0.3.0
+  cimg: circleci/cimg@0.6.5
+
+parameters:
+  cron:
+    type: boolean
+    default: false
 
 workflows:
+  automated-wf:
+      when: << pipeline.parameters.cron >>
+      jobs:
+        - cimg/update:
+            update-script: clojureFeed.sh
+            context:
+              - slack-notification-access-token
+              - slack-cimg-notifications
+              - cpe-image-bot-github-creds
+
   main-wf:
+    when:
+      not: << pipeline.parameters.cron >>
     jobs:
       - cimg/build-and-deploy:
           name: "Test"

@@ -10,12 +10,12 @@ ENV CLOJURE_VERSION=%%VERSION_FULL%% \
 # Setup the primary install method for Clojure, using CLJ. It unfortunately
 # requires the Clojure version as well as the build number (?), thus a
 # parameter (param1) is used.
-RUN curl -sSL -o clojure-installer.sh "https://download.clojure.org/install/linux-install-%%PARAM1%%.sh" && \
+RUN curl -sSL -o clojure-installer.sh "https://github.com/clojure/brew-install/releases/download/%%VERSION_FULL%%.%%PARAM1%%/linux-install.sh" && \
 	chmod +x clojure-installer.sh && \
 	sudo ./clojure-installer.sh && \
 	rm clojure-installer.sh
 
-ENV LEIN_VERSION=2.10.0
+ENV LEIN_VERSION=2.11.2
 RUN mkdir -p $HOME/bin && \
 	# the above line can go in the next base image update
 	curl -sSL -o $HOME/bin/lein "https://raw.githubusercontent.com/technomancy/leiningen/${LEIN_VERSION}/bin/lein" && \

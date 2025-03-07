@@ -34,9 +34,8 @@ getClojureVersion() {
   echo "Getting Lein version..."
   getLeinVersion "Dockerfile.template"
 
-  # RSS_URL="https://github.com/clojure/clojure/tags.atom"
-  # VERSIONS=$(curl --silent "$RSS_URL" | grep -E '(title)' | tail -n +2 | sed -e 's/^[ \t]*//' | sed -e 's/<title>//' -e 's/<\/title>//')
-  VERSIONS=$(cat temp-versions)
+  RSS_URL="https://github.com/clojure/clojure/tags.atom"
+  VERSIONS=$(curl --silent "$RSS_URL" | grep -E '(title)' | tail -n +2 | sed -e 's/^[ \t]*//' | sed -e 's/<title>//' -e 's/<\/title>//')
   for version in $VERSIONS; do
     if [[ $version =~ ^clojure-[0-9]+(\.[0-9]+)*$ ]]; then
       version_copy="$(cut -d '-' -f2 <<< "$version")"

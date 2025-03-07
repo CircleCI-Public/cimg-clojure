@@ -4,7 +4,7 @@ FROM cimg/openjdk:17.0
 
 LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
-ENV CLOJURE_VERSION=1.11.2 \
+ENV CLOJURE_VERSION=1.12.0 \
 	PATH=$JAVA_HOME/bin:$PATH
 
 # Setup the primary install method for Clojure, using CLJ. It unfortunately

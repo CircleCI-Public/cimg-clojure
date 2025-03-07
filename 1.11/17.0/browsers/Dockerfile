@@ -1,6 +1,6 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/clojure:1.11.1-openjdk-17.0-node
+FROM cimg/clojure:1.11.2-openjdk-17.0-node
 
 LABEL maintainer="CircleCI Community & Partner Engineering Team <community-partner@circleci.com>"
 
@@ -14,7 +14,6 @@ RUN sudo apt-get update && \
 	sudo apt-get install --yes --no-install-recommends \
 		xvfb \
 	&& \
-
     # Install Java only if it's not already available
     # Java is installed for Selenium
     if ! command -v java > /dev/null; then \

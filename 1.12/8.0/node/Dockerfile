@@ -1,6 +1,6 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/clojure:1.11.2-openjdk-11.0
+FROM cimg/clojure:1.12.0-openjdk-8.0
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 

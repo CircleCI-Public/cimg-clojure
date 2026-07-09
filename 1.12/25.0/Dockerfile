@@ -4,13 +4,13 @@ FROM cimg/openjdk:25.0
 
 LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
-ENV CLOJURE_VERSION=1.12.2 \
+ENV CLOJURE_VERSION=1.12.3 \
 	PATH=$JAVA_HOME/bin:$PATH
 
 # Setup the primary install method for Clojure, using CLJ. It unfortunately
 # requires the Clojure version as well as the build number (?), thus a
 # parameter (param1) is used.
-RUN curl -sSL -o clojure-installer.sh "https://github.com/clojure/brew-install/releases/download/1.12.2.1571/linux-install.sh" && \
+RUN curl -sSL -o clojure-installer.sh "https://github.com/clojure/brew-install/releases/download/1.12.3.1577/linux-install.sh" && \
 	chmod +x clojure-installer.sh && \
 	sudo ./clojure-installer.sh && \
 	rm clojure-installer.sh

@@ -1,5 +1,3 @@
-# vim:set ft=dockerfile:
-
 FROM cimg/clojure:1.12.6-openjdk-21.0-node
 
 LABEL maintainer="CircleCI Community & Partner Engineering Team <community-partner@circleci.com>"

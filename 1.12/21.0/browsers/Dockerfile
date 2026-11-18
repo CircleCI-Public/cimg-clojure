@@ -40,11 +40,18 @@ RUN	printf '#!/bin/sh\nXvfb :99 -screen 0 1280x1024x24 &\nexec "$@"\n' | sudo te
 # Canonical made a major technology change in how Firefox is installed from
 # Ubuntu 21.10 and up. The general CI space doesn't seem to be ready for a snap
 # based Firefox right now so we are installing it from the Mozilla PPA.
+#
+# The PPA is added by hand rather than with add-apt-repository, which depends
+# on the Launchpad API being up. The signing key is pinned by fingerprint.
 RUN echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries && \
 	echo 'Package: *' | sudo tee -a /etc/apt/preferences.d/firefox.pref && \
 	echo 'Pin: release o=LP-PPA-mozillateam' | sudo tee -a /etc/apt/preferences.d/firefox.pref && \
 	echo 'Pin-Priority: 1001' | sudo tee -a /etc/apt/preferences.d/firefox.pref && \
-	sudo add-apt-repository --yes ppa:mozillateam/ppa && \
+	MOZ_PPA_KEY=738BEB9321D1AAEC13EA9391AEBDF4819BE21867 && \
+	curl -sSL --fail --retry 5 "https://keyserver.ubuntu.com/pks/lookup?op=get&options=mr&search=0x${MOZ_PPA_KEY}" | sudo gpg --dearmor -o /usr/share/keyrings/mozillateam-ppa.gpg && \
+	gpg --show-keys --with-colons /usr/share/keyrings/mozillateam-ppa.gpg | grep -q "^fpr:::::::::${MOZ_PPA_KEY}:" && \
+	echo "deb [signed-by=/usr/share/keyrings/mozillateam-ppa.gpg] https://ppa.launchpadcontent.net/mozillateam/ppa/ubuntu $(. /etc/os-release && echo "${VERSION_CODENAME}") main" | sudo tee /etc/apt/sources.list.d/mozillateam-ppa.list && \
+	sudo apt-get update && \
 	sudo apt-get install --no-install-recommends --yes firefox && \
 	sudo rm -rf /var/lib/apt/lists/* && \
 	firefox --version

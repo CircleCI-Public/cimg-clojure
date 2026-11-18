@@ -1,5 +1,3 @@
-# vim:set ft=dockerfile:
-
 FROM cimg/%%PARENT%%:%%PARENT_TAG%%
 
 LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"

@@ -40,7 +40,8 @@ RUN	printf '#!/bin/sh\nXvfb :99 -screen 0 1280x1024x24 &\nexec "$@"\n' | sudo te
 # Canonical made a major technology change in how Firefox is installed from
 # Ubuntu 21.10 and up. The general CI space doesn't seem to be ready for a snap
 # based Firefox right now so we are installing it from the Mozilla PPA.
-RUN echo 'Package: *' | sudo tee -a /etc/apt/preferences.d/firefox.pref && \
+RUN echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries && \
+	echo 'Package: *' | sudo tee -a /etc/apt/preferences.d/firefox.pref && \
 	echo 'Pin: release o=LP-PPA-mozillateam' | sudo tee -a /etc/apt/preferences.d/firefox.pref && \
 	echo 'Pin-Priority: 1001' | sudo tee -a /etc/apt/preferences.d/firefox.pref && \
 	sudo add-apt-repository --yes ppa:mozillateam/ppa && \

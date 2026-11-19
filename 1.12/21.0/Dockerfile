@@ -1,19 +1,21 @@
+# vim:set ft=dockerfile:
+
 FROM cimg/openjdk:21.0
 
 LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
-ENV CLOJURE_VERSION=1.12.6 \
+ENV CLOJURE_VERSION=1.12.7 \
 	PATH=$JAVA_HOME/bin:$PATH
 
 # Setup the primary install method for Clojure, using CLJ. It unfortunately
 # requires the Clojure version as well as the build number (?), thus a
 # parameter (param1) is used.
-RUN curl -sSL -o clojure-installer.sh "https://github.com/clojure/brew-install/releases/download/1.12.6.1673/linux-install.sh" && \
+RUN curl -sSL -o clojure-installer.sh "https://github.com/clojure/brew-install/releases/download/1.12.7.1681/linux-install.sh" && \
 	chmod +x clojure-installer.sh && \
 	sudo ./clojure-installer.sh && \
 	rm clojure-installer.sh
 
-ENV LEIN_VERSION=2.12.0
+ENV LEIN_VERSION=2.13.1
 RUN mkdir -p $HOME/bin && \
 	# the above line can go in the next base image update
 	curl -sSL -o $HOME/bin/lein "https://raw.githubusercontent.com/technomancy/leiningen/${LEIN_VERSION}/bin/lein" && \
